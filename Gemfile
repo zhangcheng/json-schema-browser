@@ -1,7 +1,8 @@
-source 'http://rubygems.org'
+source 'http://ruby.taobao.org/'
+
 gem 'sinatra'
 gem 'haml'
 gem 'activesupport'
 gem 'i18n'
-gem 'sk_api_schema' #, :git => 'https://github.com/salesking/sk_api_schema.git', :branch => 'master'
+gem 'sk_api_schema', :path => "../sk_api_schema/"
 gem 'sinatra-partial'

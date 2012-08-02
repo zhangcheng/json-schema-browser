@@ -6,12 +6,23 @@ require 'haml'
 require 'sinatra/partial'
 
 get '/' do
-  @schemas = SK::Api::Schema.read_all('v1.0')
+  @schemas = SK::Api::Schema.read_all('v2.0')
   @object_names = @schemas.map{|i| i[:title].humanize }.sort
   haml :index
 end
 
 get '/schemas' do
+  content_type :json
+  SK::Api::Schema.read_all('v2.0').to_json
+end
+
+get '/v1' do
+  @schemas = SK::Api::Schema.read_all('v1.0')
+  @object_names = @schemas.map{|i| i[:title].humanize }.sort
+  haml :index
+end
+
+get '/v1/schemas' do
   content_type :json
   SK::Api::Schema.read_all('v1.0').to_json
 end
